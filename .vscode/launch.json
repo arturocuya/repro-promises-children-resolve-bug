@@ -11,7 +11,8 @@
             "rootDir": "${workspaceFolder}/dist/build",
             "preLaunchTask": "build",
             "name": "Launch Test resolve with children (dev)",
-            "injectRdbOnDeviceComponent": true
+            "injectRdbOnDeviceComponent": true,
+            "enableDebugProtocol": true
         },
         {
             "type": "brightscript",

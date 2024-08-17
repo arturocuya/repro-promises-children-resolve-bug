@@ -1,9 +1,46 @@
+import "pkg:/source/lib/promises.bs"
+
 sub init()
     label = m.top.findNode("welcome")
-    label.text = "Hello from create-roku-app"
+    label.text = "press left to resolve without subtype and right to resolve with it (both include children)"
+
+    m.top.setFocus(true)
 
     ' This is required to pass certification.
     ' Specified in section 3.2 of the Roku Certification Criteria.
     ' Reference: https://developer.roku.com/docs/developer-program/certification/certification.md#3-performance
     m.top.signalBeacon("AppLaunchComplete")
 end sub
+
+function onKeyEvent(key as string, press as boolean) as boolean
+    if (not press)
+        return false
+    end if
+
+    if (key = "left")
+        promise = promises.create()
+
+        promises.onThen(promise, sub (result)
+            ? "onThen result is", result
+        end sub)
+
+        promises.resolve({ children: [
+                { subtype: "Node", id: "node1" },
+                { subtype: "Node", id: "node2" },
+        ] }, promise)
+    else if (key = "right")
+        promise = promises.create()
+
+        promises.onThen(promise, sub (result)
+            ? "onThen result is", result
+        end sub)
+
+        promises.resolve({ subtype: "Node",
+            children: [
+                { subtype: "Node", id: "node1" },
+                { subtype: "Node", id: "node2" },
+        ] }, promise)
+    end if
+
+    return true
+end function
