@@ -1,0 +1,16 @@
+{
+    "diagnosticLevel": "error",
+    "retainStagingFolder": true,
+    "rootDir": "../src/",
+    "plugins": [],
+    "files": [
+        "source/**/*",
+        "components/**/*",
+        "images/**/*",
+        "fonts/**/*",
+        "manifest"
+    ],
+    "stagingFolderPath": "dist/build",
+    "createPackage": false,
+    "sourceMap": true
+}

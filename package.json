@@ -1,0 +1,16 @@
+{
+    "private": true,
+    "version": "0.0.1",
+    "dependencies": {},
+    "devDependencies": {
+        "brighterscript": "^0.67.5"
+    },
+    "scripts": {
+        "prebuild": "rm -rf dist",
+        "build": "bsc",
+        "build:prod": "npm run build -- --sourceMap=false"
+    },
+    "ropm": {
+        "rootDir": "src"
+    }
+}
